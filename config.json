@@ -1,4 +1,0 @@
-{
-  "datasource" : "db", //file ?
-  "filesaver" : "directory" //git, ftp ?
-}

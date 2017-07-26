@@ -3,6 +3,7 @@
 namespace AppBundle\Apk;
 
 use AppBundle\Apk\FinderInterface;
+use AppBundle\Model\Apk;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Routing\RouterInterface;
 
@@ -85,5 +86,22 @@ class Manager
         }
 
         return $apps;
+    }
+
+    /**
+     * Save an apk.
+     *
+     * @param  Apk $apk
+     */
+    public function save(Apk $apk)
+    {
+        $path = $apk->getPath();
+        $folder = dirname($path);
+        @mkdir($folder, 0777, true);
+
+        file_put_contents($path, $apk->getContent());
+        if (null !== $comment = $apk->getComment()) {
+            file_put_contents($folder.'/comment.txt', $comment);
+        }
     }
 }

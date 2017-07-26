@@ -2,12 +2,39 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}App Market{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('css/materialize.css') }}">
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <style>
+            .form-add-apk ul li {
+                color: #B9121B;
+            }
+        </style>
     </head>
     <body>
+        <nav class="green">
+            <div class="nav-wrapper container">
+              <a href="/" class="brand-logo">App Market</a>
+              <a href="#" data-activates="side-nav" class="button-collapse"><i class="material-icons">menu</i></a>
+              <ul id="nav-mobile" class="right hide-on-med-and-down">
+                {% include 'partial/navbar_content.html.twig' %}
+              </ul>
+                <ul id="side-nav" class="side-nav">
+                {% include 'partial/navbar_content.html.twig' %}
+              </ul>
+            </div>
+          </nav>
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
+        <script src="{{ asset('js/jquery.min.js') }}" ></script>
+        <script src="{{ asset('js/materialize.min.js') }}"></script>
+        <script>
+            $(function() {
+                $('.button-collapse').sideNav();
+            });
+        </script>
     </body>
 </html>

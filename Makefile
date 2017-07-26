@@ -1,6 +1,7 @@
 install:
 	docker build docker/application
 	docker-compose run --rm composer install
+	docker-compose run --rm application npm install
 
 start: install
 	docker-compose up -d

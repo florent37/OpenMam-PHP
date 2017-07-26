@@ -25,12 +25,16 @@ services:
         public: true
         tags: ['controller.service_arguments']
 
-    apk.finder:
+    AppBundle\Apk\FinderInterface:
         class: AppBundle\Apk\Finder
         arguments: ['%apk_folder%']
 
-    apk.manager:
+    AppBundle\Apk\Manager:
         class: AppBundle\Apk\Manager
+
+    AppBundle\Apk\Form\Handler\Handler:
+        class: AppBundle\Apk\Form\Handler\Handler
+        arguments: ['@AppBundle\Apk\Manager', '%apk_folder%']
 
     apk.converter:
         class: AppBundle\ParamConverters\ApkConverter

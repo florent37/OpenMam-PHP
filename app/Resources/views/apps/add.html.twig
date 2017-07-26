@@ -1,0 +1,30 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <h2>Add an Apk</h2>
+        </div>
+        <div class="row">
+            <form class="form-add-apk" action="{{ path('add_apps') }}" method="POST" enctype="multipart/form-data">
+                {{ form_row(form.name) }}
+                {{ form_row(form.version) }}
+                {{ form_row(form.code) }}
+                <div class="file-field input-field">
+                    <div class="btn">
+                        <span>File</span>
+                        {{ form_row(form.file) }}
+                  </div>
+                  <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text">
+                  </div>
+                </div>
+                {{ form_row(form.comment) }}
+                {{ form_rest(form) }}
+                <button class="btn waves-effect waves-light right blue" type="submit" name="action">Create
+                    <i class="material-icons right">send</i>
+                </button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

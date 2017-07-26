@@ -1,0 +1,26 @@
+{
+  "name": "app-market",
+  "version": "1.0.0",
+  "description": "open ====",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "materialize-css": "^0.100.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/florent37/OpenMam-PHP.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/florent37/OpenMam-PHP/issues"
+  },
+  "homepage": "https://github.com/florent37/OpenMam-PHP#readme"
+}

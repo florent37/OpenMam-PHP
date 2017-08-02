@@ -1,0 +1,30 @@
+parameters:
+    apk_folder: '%kernel.project_dir%/data/apk'
+
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        # automatically injects dependencies in your services
+        autowire: true
+        # automatically registers your services as commands, event subscribers, etc.
+        autoconfigure: true
+        # this means you cannot fetch services directly from the container via $container->get()
+        # if you need to do this, you can override this setting on individual services
+
+    CoreBundle\Apk\FinderInterface:
+        class: CoreBundle\Apk\Finder
+        arguments: ['%apk_folder%']
+
+    CoreBundle\Apk\Manager:
+        class: CoreBundle\Apk\Manager
+
+    apk.converter:
+        class: CoreBundle\ParamConverters\ApkConverter
+        arguments: ['%apk_folder%']
+        tags:
+            - { name: request.param_converter, converter: apk_converter }
+
+    # add more services, or override services that need manual wiring
+    # CoreBundle\Service\ExampleService:
+    #     arguments:
+    #         $someArgument: 'some_value'

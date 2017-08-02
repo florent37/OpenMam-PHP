@@ -2,7 +2,7 @@
 
 namespace AppBundle\Apk\Form\Handler;
 
-use AppBundle\Apk\Manager;
+use CoreBundle\Apk\Manager;
 use AppBundle\Model\Apk;
 use Symfony\Component\Form\Form;
 

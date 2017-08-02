@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Apk;
+namespace CoreBundle\Apk;
 
 interface FinderInterface
 {

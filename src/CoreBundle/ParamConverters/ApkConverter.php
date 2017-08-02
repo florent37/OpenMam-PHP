@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\ParamConverters;
+namespace CoreBundle\ParamConverters;
 
 use AppBundle\Model\Apk;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;

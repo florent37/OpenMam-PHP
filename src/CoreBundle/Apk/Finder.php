@@ -1,8 +1,8 @@
 <?php
 
-namespace AppBundle\Apk;
+namespace CoreBundle\Apk;
 
-use AppBundle\Apk\FinderInterface;
+use CoreBundle\Apk\FinderInterface;
 use Symfony\Component\Finder\Finder as FinderComponent;
 use Symfony\Component\Finder\SplFileInfo;
 

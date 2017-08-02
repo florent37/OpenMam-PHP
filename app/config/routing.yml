@@ -1,10 +1,4 @@
-root:
-    path: /
-    defaults:
-        _controller: FrameworkBundle:Redirect:urlRedirect
-        path: /apps
-        permanent: true
-
 app:
     resource: '@AppBundle/Controller/'
     type: annotation
+    prefix:   /

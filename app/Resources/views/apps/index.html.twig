@@ -1,0 +1,23 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <h2>Apps</h2>
+            <ul class="collection">
+                {% for app in apps %}
+                    <li class="collection-item avatar">
+                        <i class="material-icons circle">android</i>
+                        <span class="title">{{ app.name }}</span>
+                        <p>
+                            <b>Last version</b>: {{ app.last_version }}<br>
+                            <b>Last code</b>: {{ app.last_code }}<br>
+                            <b>Last uploaded date</b>: {{ app.last_uploaded_date }}<br>
+                        </p>
+                        <a href="{{ path('show_apps', {'name': app.name }) }}" class="secondary-content"><i class="material-icons">details</i></a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock %}

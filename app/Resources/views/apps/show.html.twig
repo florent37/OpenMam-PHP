@@ -1,0 +1,25 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <h3>&nbsp;&nbsp;{{ name }}</h3>
+            <ul class="collection">
+                {% for version in versions %}
+                    <li class="collection-item avatar">
+                        <i class="material-icons circle">android</i>
+                        <span class="title">{{ version.version_name }}</span>
+                        <p>
+                            <b>Code</b>: {{ version.code }}<br>
+                            <b>Upload date</b>: {{ version.upload_date }}<br>
+                            {% if version.comment is defined %}
+                                <b>Comment</b>: <br>{{ version.comment }}
+                            {% endif %}
+                        </p>
+                        <a href="{{ version.path }}" class="secondary-content"><i class="material-icons">cloud_download</i></a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock %}

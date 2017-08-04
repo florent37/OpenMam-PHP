@@ -1,10 +1,9 @@
 <?php
 
-namespace AppBundle\Controller;
+namespace ApiBundle\Controller;
 
-use AppBundle\Apk\Finder;
-use AppBundle\Apk\Manager as ApkManager;
-use AppBundle\Apk\Manager;
+use CoreBundle\Apk\Finder;
+use CoreBundle\Apk\Manager as ApkManager;
 use AppBundle\Model\Apk;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -17,9 +16,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-/**
- * @Route("/api")
- */
 class ApiController extends Controller
 {
     /**
@@ -38,7 +34,7 @@ class ApiController extends Controller
      * })
      * @Method({"POST"})
      */
-    public function uploadAction(Apk $apk, Manager $manager)
+    public function uploadAction(Apk $apk, ApkManager $manager)
     {
         try {
             $manager->save($apk);

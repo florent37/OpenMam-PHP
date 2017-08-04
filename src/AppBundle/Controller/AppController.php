@@ -4,16 +4,15 @@ namespace AppBundle\Controller;
 
 use AppBundle\Apk\Form\Handler\Handler;
 use AppBundle\Apk\Form\Type\ApkType;
-use AppBundle\Apk\Manager;
+use CoreBundle\Apk\Manager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/apps")
- */
 class AppController extends Controller
 {
     /**
@@ -56,5 +55,31 @@ class AppController extends Controller
             'name' => $name,
             'versions' => $manager->getVersionsByName($name)
         ]);
+    }
+
+    /**
+     * @Route("/{name}/{version}/{code}", name="download_app")
+     */
+    public function downloadAction(string $name, string $version, string $code)
+    {
+        $filename = sprintf(
+            '%s/data/apk/%s/%s/%s/%s.apk',
+            $this->getParameter('kernel.project_dir'),
+            $name,
+            $version,
+            $code,
+            $name
+        );
+
+        $response = (new BinaryFileResponse($filename))
+            ->setContentDisposition(
+                ResponseHeaderBag::DISPOSITION_ATTACHMENT,
+                $name.'.apk'
+            )
+        ;
+
+        $response->headers->set('Content-Type', 'application/vnd.android.package-archive');
+
+        return $response;
     }
 }

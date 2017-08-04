@@ -1,8 +1,3 @@
-# Learn more about services, parameters and containers at
-# https://symfony.com/doc/current/service_container.html
-parameters:
-    apk_folder: '%kernel.project_dir%/data/apk'
-
 services:
     # default configuration for services in *this* file
     _defaults:
@@ -25,24 +20,6 @@ services:
         public: true
         tags: ['controller.service_arguments']
 
-    AppBundle\Apk\FinderInterface:
-        class: AppBundle\Apk\Finder
-        arguments: ['%apk_folder%']
-
-    AppBundle\Apk\Manager:
-        class: AppBundle\Apk\Manager
-
     AppBundle\Apk\Form\Handler\Handler:
         class: AppBundle\Apk\Form\Handler\Handler
-        arguments: ['@AppBundle\Apk\Manager', '%apk_folder%']
-
-    apk.converter:
-        class: AppBundle\ParamConverters\ApkConverter
-        arguments: ['%apk_folder%']
-        tags:
-            - { name: request.param_converter, converter: apk_converter }
-
-    # add more services, or override services that need manual wiring
-    # AppBundle\Service\ExampleService:
-    #     arguments:
-    #         $someArgument: 'some_value'
+        arguments: ['@CoreBundle\Apk\Manager', '%apk_folder%']

@@ -1,8 +1,8 @@
 <?php
 
-namespace AppBundle\Apk;
+namespace CoreBundle\Apk;
 
-use AppBundle\Apk\FinderInterface;
+use CoreBundle\Apk\FinderInterface;
 use AppBundle\Model\Apk;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Routing\RouterInterface;

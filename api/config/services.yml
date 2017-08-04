@@ -1,0 +1,48 @@
+# Learn more about services, parameters and containers at
+# https://symfony.com/doc/current/service_container.html
+parameters:
+    apk_folder: '%kernel.project_dir%/data/apk'
+
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        # automatically injects dependencies in your services
+        autowire: true
+        # automatically registers your services as commands, event subscribers, etc.
+        autoconfigure: true
+        # this means you cannot fetch services directly from the container via $container->get()
+        # if you need to do this, you can override this setting on individual services
+
+
+    ApiBundle\:
+        resource: '../../src/ApiBundle/*'
+        # you can exclude directories or files
+        # but if a service is unused, it's removed anyway
+        exclude: '../../src/ApiBundle/{Entity,Repository,Tests,Apk,Model,ParamConverters}'
+
+    ApiBundle\Controller\:
+        resource: '../../src/ApiBundle/Controller'
+        public: true
+        tags: ['controller.service_arguments']
+
+    AppBundle\Apk\FinderInterface:
+        class: AppBundle\Apk\Finder
+        arguments: ['%apk_folder%']
+
+    ApiBundle\Apk\Manager:
+        class: ApiBundle\Apk\Manager
+
+    ApiBundle\Apk\Form\Handler\Handler:
+        class: ApiBundle\Apk\Form\Handler\Handler
+        arguments: ['@ApiBundle\Apk\Manager', '%apk_folder%']
+
+    apk.converter:
+        class: ApiBundle\ParamConverters\ApkConverter
+        arguments: ['%apk_folder%']
+        tags:
+            - { name: request.param_converter, converter: apk_converter }
+
+    # add more services, or override services that need manual wiring
+    # ApiBundle\Service\ExampleService:
+    #     arguments:
+    #         $someArgument: 'some_value'

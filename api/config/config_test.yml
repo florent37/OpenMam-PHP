@@ -8,12 +8,5 @@ framework:
     profiler:
         collect: false
 
-web_profiler:
-    toolbar: false
-    intercept_redirects: false
-
-swiftmailer:
-    disable_delivery: true
-
 parameters:
-  apk_folder: '%kernel.project_dir%/tests/AppBundle/fixtures/data/apk'
+  apk_folder: '%kernel.project_dir%/tests/ApiBundle/fixtures/data/apk'

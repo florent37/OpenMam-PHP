@@ -21,7 +21,7 @@ class ApiController extends Controller
     /**
      * @Route("/")
      */
-    public function listAction(ApkManager $manager)
+    public function indexAction(ApkManager $manager)
     {
         return new JsonResponse(['apps' => $manager->getAll()]);
     }

@@ -1,10 +1,12 @@
 /.web-server-pid
 /app/config/parameters.yml
+/api/config/parameters.yml
 /build/
 /phpunit.xml
-/var/*
+/var/bootstrap.php.cache
 !/var/cache
 /var/cache/*
+/var/data/*
 !var/cache/.gitkeep
 !/var/logs
 /var/logs/*

@@ -1,7 +1,10 @@
 <?php
 
-use Symfony\Component\HttpKernel\Kernel;
+use Doctrine\Bundle\DoctrineBundle\DoctrineBundle;
+use Gesdinet\JWTRefreshTokenBundle\GesdinetJWTRefreshTokenBundle;
 use Symfony\Component\Config\Loader\LoaderInterface;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Kernel;
 
 class ApiKernel extends Kernel
 {
@@ -12,6 +15,9 @@ class ApiKernel extends Kernel
             new Symfony\Bundle\SecurityBundle\SecurityBundle(),
             new Symfony\Bundle\MonologBundle\MonologBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
+            new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
+            new Lexik\Bundle\JWTAuthenticationBundle\LexikJWTAuthenticationBundle(),
+            new Gesdinet\JWTRefreshTokenBundle\GesdinetJWTRefreshTokenBundle(),
             new CoreBundle\CoreBundle(),
             new ApiBundle\ApiBundle(),
         ];

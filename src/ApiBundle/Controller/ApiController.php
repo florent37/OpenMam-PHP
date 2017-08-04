@@ -21,7 +21,7 @@ class ApiController extends Controller
     /**
      * @Route("/")
      */
-    public function listAction(ApkManager $manager)
+    public function indexAction(ApkManager $manager)
     {
         return new JsonResponse(['apps' => $manager->getAll()]);
     }
@@ -32,7 +32,7 @@ class ApiController extends Controller
      *    "version": "\w+",
      *    "code": "\d+"
      * })
-     * @Method({"POST"})
+     * @Method({"POST", "GET"})
      */
     public function uploadAction(Apk $apk, ApkManager $manager)
     {

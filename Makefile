@@ -16,4 +16,4 @@ stop:
 	docker-compose stop
 
 test:
-	docker-compose run --rm application vendor/bin/phpunit -c tests/
+	docker-compose run --rm application vendor/bin/phpunit tests/

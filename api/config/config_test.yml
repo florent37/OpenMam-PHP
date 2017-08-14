@@ -8,5 +8,9 @@ framework:
     profiler:
         collect: false
 
+doctrine:
+    dbal:
+        path: '%database_test_path%'
+
 parameters:
-  apk_folder: '%kernel.project_dir%/tests/ApiBundle/fixtures/data/apk'
+    apk_folder: '%kernel.project_dir%/tests/ApiBundle/fixtures/data/apk'

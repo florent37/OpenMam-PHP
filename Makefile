@@ -1,6 +1,7 @@
 init:
 	@bin/console_api do:da:cr # Initialize database
 	@bin/console_api do:sc:up --force # Generate schema for refresh_token
+
 install:
 	docker build docker/application
 	docker-compose run --rm composer install
@@ -19,4 +20,6 @@ stop:
 	docker-compose stop
 
 test:
-	docker-compose run --rm application ../vendor/bin/phpunit ../tests/
+	@docker-compose run --rm application ../bin/console_api do:da:cr -e=test # Initialize database for test
+	@docker-compose run --rm application ../bin/console_api do:sc:up -e=test --force # Generate schema for refresh_token for test
+	@docker-compose run --rm application ../vendor/bin/phpunit ../tests/

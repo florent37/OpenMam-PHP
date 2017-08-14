@@ -32,7 +32,7 @@ class ApiController extends Controller
      *    "version": "\w+",
      *    "code": "\d+"
      * })
-     * @Method({"POST"})
+     * @Method({"POST", "GET"})
      */
     public function uploadAction(Apk $apk, ApkManager $manager)
     {

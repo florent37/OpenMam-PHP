@@ -6,6 +6,10 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class ApiControllerTest extends WebTestCase
 {
+    const USERNAME = 'foo';
+
+    const PASSWORD = 'foo';
+
     /**
      * @var Client
      */
@@ -36,6 +40,17 @@ class ApiControllerTest extends WebTestCase
         $this->assertEquals(200, $this->client->getResponse()->getStatusCode());
     }
 
+    public function testITryToUploadWithoutCredential()
+    {
+        $this->client = static::createClient();
+        $crawler = $this->client->request(
+            'POST',
+            '/upload'
+        );
+
+        $this->assertEquals(401, $this->client->getResponse()->getStatusCode());
+    }
+
     public function testUpload()
     {
         $this->client = static::createClient();
@@ -60,6 +75,7 @@ class ApiControllerTest extends WebTestCase
                 'HTTP_apk-name' => $name,
                 'HTTP_apk-version' => $version,
                 'HTTP_apk-code' => $code,
+                'HTTP_AUTHORIZATION' => 'Bearer '.$this->getToken()
             ],
             file_get_contents(__DIR__.'/../fixtures/data/apk/my-apk-2name/1.0.2/12/my-apk-name.apk')
         );
@@ -67,6 +83,27 @@ class ApiControllerTest extends WebTestCase
         $this->assertEquals(200, $this->client->getResponse()->getStatusCode());
         $this->assertFileExists($fullFilePath);
         $this->removeTmpFolder($fullFilePath, $filePath);
+    }
+
+    /**
+     * Retrieve an available token.
+     *
+     * @return string
+     */
+    private function getToken() : string
+    {
+        $this->client->request(
+            'POST',
+            '/login_check',
+            [
+                '_username' => self::USERNAME,
+                '_password' => self::PASSWORD,
+            ]
+        );
+
+        $token = json_decode($this->client->getResponse()->getContent());
+
+        return $token->token;
     }
 
     private function removeTmpFolder($fullFilePath, $filePath)

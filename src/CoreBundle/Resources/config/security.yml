@@ -1,0 +1,39 @@
+security:
+    encoders:
+        Symfony\Component\Security\Core\User\User: plaintext
+
+    providers:            # Required
+        # Examples:
+        in_memory_provider:
+            memory:
+                users:
+                    foo:
+                        password:           foo
+                        roles:              ROLE_USER
+
+            # http_digest:
+    #             provider: in_memory_provider
+    #         # guard:
+    #         #     # A key from the "providers" section of your security config, in case your user provider is different than the firewall
+    #         #     provider:             ~
+
+    #         #     # A service id (of one of your authenticators) whose start() method should be called when an anonymous user hits a page that requires authentication
+    #         #     entry_point:          null
+
+    #         #     # An array of service ids for all of your "authenticators"
+    #         #     authenticators:       []
+    #         form_login:
+    #             # submit the login form here
+    #             check_path: /login_check
+
+    #             # the user is redirected here when they need to log in
+    #             login_path: /login
+
+    #             # if true, forward the user to the login form instead of redirecting
+    #             use_forward: false
+
+    #             # login success redirecting options (read further below)
+    #             always_use_default_target_path: false
+    #             default_target_path:            /
+    #             target_path_parameter:          _target_path
+    #             use_referer:                    false

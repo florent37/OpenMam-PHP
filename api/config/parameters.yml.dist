@@ -5,6 +5,7 @@ parameters:
     database_user: root
     database_password: ~
     database_path: '%kernel.project_dir%/var/data/data.sqlite'
+    database_test_path: '%kernel.project_dir%/var/data/data.test.sqlite'
 
     # A secret key that's used to generate certain security-related tokens
     secret: ThisTokenIsNotSoSecretChangeIt

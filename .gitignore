@@ -6,8 +6,10 @@
 /var/bootstrap.php.cache
 !/var/cache
 /var/cache/*
-/var/data/*
 !var/cache/.gitkeep
+!/var/data
+/var/data/*
+!var/data/.gitkeep
 !/var/logs
 /var/logs/*
 !var/logs/.gitkeep

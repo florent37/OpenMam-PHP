@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "870312f81a723c0bab4011285ce3d8af",
-    "content-hash": "a411a4cc9e30d0774e36cda71f1545a8",
+    "hash": "1a8aa71e087867b482e14577f993b633",
+    "content-hash": "f63212428d055cce3838bfcba7c72c1f",
     "packages": [
         {
             "name": "composer/ca-bundle",
@@ -1692,16 +1692,16 @@
         },
         {
             "name": "sensiolabs/security-checker",
-            "version": "v4.1.3",
+            "version": "v4.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/security-checker.git",
-                "reference": "7d60f01b9a56dfd152796877d009b1a0578d6ef4"
+                "reference": "72f4238707071459a6680854c8c74a0ebb999549"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/security-checker/zipball/7d60f01b9a56dfd152796877d009b1a0578d6ef4",
-                "reference": "7d60f01b9a56dfd152796877d009b1a0578d6ef4",
+                "url": "https://api.github.com/repos/sensiolabs/security-checker/zipball/72f4238707071459a6680854c8c74a0ebb999549",
+                "reference": "72f4238707071459a6680854c8c74a0ebb999549",
                 "shasum": ""
             },
             "require": {
@@ -1733,7 +1733,7 @@
                 }
             ],
             "description": "A security checker for your composer.lock",
-            "time": "2017-08-03 12:24:05"
+            "time": "2017-08-14 18:42:49"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -3984,7 +3984,8 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=5.5.9"
+        "php": "7.*",
+        "ext-pdo_sqlite": "*"
     },
     "platform-dev": []
 }

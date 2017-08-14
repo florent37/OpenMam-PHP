@@ -1,3 +1,6 @@
+init:
+	@bin/console_api do:da:cr # Initialize database
+	@bin/console_api do:sc:up --force # Generate schema for refresh_token
 install:
 	docker build docker/application
 	docker-compose run --rm composer install
